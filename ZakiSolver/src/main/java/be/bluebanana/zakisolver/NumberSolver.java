@@ -1,16 +1,8 @@
 package be.bluebanana.zakisolver;
 
-import android.content.Context;
-import android.util.Log;
-
 import org.paukov.combinatorics3.Generator;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.TreeSet;
 
 public class NumberSolver extends Solver<Integer, String> {
@@ -48,31 +40,29 @@ public class NumberSolver extends Solver<Integer, String> {
             Generator.combination(input_list)
                     .simple(k)
                     .stream()
-                    .forEach(combination -> {
-                        Generator.permutation(combination)
-                                .simple()
-                                .stream()
-                                .forEach(perm -> {
-                                    List<Node> list = Node.getAllTrees(perm);
-                                    for (Node root : list) {
-                                        try {
-                                            float result = root.evaluate();
-                                            float delta = Math.abs(result - target);
-                                            if ( delta < smallest_delta) {
-                                                // better solution, throw away all the rest
-                                                output.clear();
-                                                smallest_delta = delta;
-                                            }
-                                            if (delta == smallest_delta) {
-                                                output.add(String.format("%s = %.0f", root.toPlainTextString(), result));
-                                            }
-                                            //Log.d("Node", String.format("%s = %.2f", root.toString(), result));
-                                        } catch (ArithmeticException e) {
-                                            // ignore divisions by zero...
+                    .forEach(combination -> Generator.permutation(combination)
+                            .simple()
+                            .stream()
+                            .forEach(perm -> {
+                                List<Node> list = Node.getAllTrees(perm);
+                                for (Node root : list) {
+                                    try {
+                                        float result = root.evaluate();
+                                        float delta = Math.abs(result - target);
+                                        if ( delta < smallest_delta) {
+                                            // better solution, throw away all the rest
+                                            output.clear();
+                                            smallest_delta = delta;
                                         }
+                                        if (delta == smallest_delta) {
+                                            output.add(String.format("%s = %.0f", root.toPlainTextString(), result));
+                                        }
+                                        //Log.d("Node", String.format("%s = %.2f", root.toString(), result));
+                                    } catch (ArithmeticException e) {
+                                        // ignore divisions by zero...
                                     }
-                                });
-                    });
+                                }
+                            }));
         }
 
         resultCallback.result(output);

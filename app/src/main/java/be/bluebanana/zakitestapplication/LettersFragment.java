@@ -18,8 +18,8 @@ import be.bluebanana.zakisolver.LetterSolver;
 
 public class LettersFragment extends Fragment implements View.OnClickListener {
 
-    LetterSolver solver = new LetterSolver();
-    ArrayList<Character> letters = new ArrayList<>();
+    final LetterSolver solver = new LetterSolver();
+    final ArrayList<Character> letters = new ArrayList<>();
 
     TextView results_tv;
     TextView input_tv;
@@ -68,9 +68,7 @@ public class LettersFragment extends Fragment implements View.OnClickListener {
                     }
                     results.stream()
                             .limit(10)
-                            .forEach(result -> {
-                                results_tv.append(String.format("%s (%d)\n", result, result.length()));
-                            });
+                            .forEach(result -> results_tv.append(String.format("%s (%d)\n", result, result.length())));
                 }
         );
     }

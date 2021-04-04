@@ -8,19 +8,17 @@ import org.paukov.combinatorics3.Generator;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 public class LetterSolver extends Solver<Character, String> {
 
     SolverResultCallback<String> resultCallback;
 
     List<Character> input_list;
-    Set<String> dictionary = new TreeSet<>();
+    final Set<String> dictionary = new TreeSet<>();
 
     public LetterSolver() {
         // intentionally left blank

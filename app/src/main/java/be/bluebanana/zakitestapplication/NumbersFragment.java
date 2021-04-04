@@ -17,8 +17,8 @@ import be.bluebanana.zakisolver.NumberSolver;
 
 public class NumbersFragment extends Fragment implements View.OnClickListener {
 
-    NumberSolver solver = new NumberSolver();
-    ArrayList<Integer> numbers = new ArrayList<>();
+    final NumberSolver solver = new NumberSolver();
+    final ArrayList<Integer> numbers = new ArrayList<>();
     int target = 0;
 
     TextView results_tv;
@@ -63,9 +63,7 @@ public class NumbersFragment extends Fragment implements View.OnClickListener {
                     }
                     results.stream()
                             .limit(10)
-                            .forEach(result -> {
-                                results_tv.append(String.format("%s\n", result));
-                            });
+                            .forEach(result -> results_tv.append(String.format("%s\n", result)));
                 }
         );
     }
