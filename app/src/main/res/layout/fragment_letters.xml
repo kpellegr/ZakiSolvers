@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LettersFragment">
+
+    <TextView
+        android:id="@+id/tv_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100sp"
+        android:text=""
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/button_generate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_generate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/generate"
+        app:layout_constraintTop_toBottomOf="@id/tv_input"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview"
+        app:layout_constraintEnd_toStartOf="@id/button_solve"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_solve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/solve"
+        app:layout_constraintBottom_toTopOf="@+id/scrollview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_generate"
+        app:layout_constraintTop_toBottomOf="@id/tv_input" />
+
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintTop_toBottomOf="@id/button_generate"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <TextView
+            android:id="@+id/tv_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            />
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
