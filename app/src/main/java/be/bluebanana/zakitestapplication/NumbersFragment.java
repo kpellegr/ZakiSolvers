@@ -50,10 +50,7 @@ public class NumbersFragment extends Fragment implements View.OnClickListener {
 
     public void solve (View v) {
         // set up the solver
-        solver.setInput(numbers, target);
-
-        // Start the solver
-        solver.solve(
+        solver.setInput(numbers, target,
                 results -> {
                     Log.d("ZAKI", String.format("Found %d matches.", results.size()));
 
@@ -63,9 +60,11 @@ public class NumbersFragment extends Fragment implements View.OnClickListener {
                     }
                     results.stream()
                             .limit(10)
-                            .forEach(result -> results_tv.append(String.format("%s\n", result)));
-                }
-        );
+                            .forEach(result -> Log.d("TAG", String.format("%s\n", result)));
+                });
+
+        // Start the solver
+        new Thread(solver).start();
     }
 
     public void generate(View v) {

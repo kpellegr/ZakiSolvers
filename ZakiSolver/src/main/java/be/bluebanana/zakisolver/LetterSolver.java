@@ -24,14 +24,11 @@ public class LetterSolver extends Solver<Character, String> {
         // intentionally left blank
     }
 
-    public void setInput(List<Character> input_list) {
+    public void setInput(List<Character> input_list,
+                         SolverResultCallback<String> resultCallback)
+    {
         this.input_list = input_list;
-    }
-
-    @Override
-    public void solve(SolverResultCallback<String> resultCallback) {
         this.resultCallback = resultCallback;
-        this.run();
     }
 
     @Override
